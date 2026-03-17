@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public Transform Target
+    {
+        get => _target;
+        set => _target = value;
+    }
+
     #region Variables
 
     [SerializeField] private Transform _target;
@@ -20,6 +26,8 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (_target == null) return;
+        
         _wantedPosition = _target.TransformPoint(_localPositionToMove);
         _wantedPosition.y = _target.position.y + _localPositionToMove.y;
         

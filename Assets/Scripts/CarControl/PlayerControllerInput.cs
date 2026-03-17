@@ -6,6 +6,10 @@ public class PlayerControllerInput : MonoBehaviour
 
     void Update()
     {
+        /*
+        _carController._horizontalInput = Input.GetAxisRaw("Horizontal");
+        _carController._verticalInput = Input.GetAxisRaw("Vertical");*/
+        
         _carController.HorizontalInput = Input.GetAxis("Joystick");
         _carController.VerticalInput = Input.GetAxis("Vertical");
         

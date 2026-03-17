@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -6,7 +7,7 @@ public class NeuralNetwork
 {
 	#region Variables
 
-	public int[] _layers = new int[4]{6, 6, 6, 2};
+	public int[] _layers = {6, 6, 6, 2};
 	public float[][] _neurons;
 	public float [][][] _axones;
 
@@ -56,7 +57,7 @@ public class NeuralNetwork
 			for (y = 0; y < _axones[x].Length; y++)
 			{
 				_axones[x][y] = new float[_layers[x+1]];
-
+				
 				for (z = 0; z < _axones[x][y].Length; z++)
 				{
 					_axones[x][y][z] = Random.Range(-1.0f, 1.0f);
@@ -97,11 +98,11 @@ public class NeuralNetwork
 
 	public void CopyNet(NeuralNetwork netCopy)
 	{
-		for (x = 0; x < netCopy._layers.Length; x++)
+		for (x = 0; x < _axones.Length; x++)
 		{
-			for(y = 0; y < netCopy._neurons[x].Length; y++)
+			for (y = 0; y < _axones[x].Length; y++)
 			{
-				for (z = 0; z < netCopy._axones[x][y].Length; z++)
+				for (z = 0; z < _axones[x][y].Length; z++)
 				{
 					_axones[x][y][z] = netCopy._axones[x][y][z];
 				}
@@ -111,9 +112,9 @@ public class NeuralNetwork
 
 	public void Mutate(float probability, float power)
 	{
-		for (x = 0; x < _layers.Length; x++)
+		for (x = 0; x < _axones.Length; x++)
 		{
-			for(y = 0; y < _neurons[x].Length; y++)
+			for(y = 0; y < _axones[x].Length; y++)
 			{
 				for (z = 0; z < _axones[x][y].Length; z++)
 				{

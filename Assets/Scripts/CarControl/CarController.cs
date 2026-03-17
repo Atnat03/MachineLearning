@@ -204,6 +204,9 @@ public class CarController : MonoBehaviour
 	{
 		_horizontalInput = 0;
 		_verticalInput = 0;
+		
+		_rigidbody.linearVelocity = Vector3.zero;
+		_rigidbody.angularVelocity = Vector3.zero;
 	}
 
 	#endregion
