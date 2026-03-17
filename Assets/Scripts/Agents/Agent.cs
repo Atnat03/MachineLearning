@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Agent : MonoBehaviour
@@ -16,8 +18,8 @@ public class Agent : MonoBehaviour
 
 	[SerializeField] NeuralNetwork _net;
 	[SerializeField] float _fitness;
-	[SerializeField] CarController _carController;
-	[SerializeField] private float _rayRange;
+	[SerializeField] KartController _carController;
+	[SerializeField] private float _rayRange = 4;
 	[SerializeField] private LayerMask _layerMaskRay;
 	
 	[Header("Color Changing")]
@@ -40,14 +42,20 @@ public class Agent : MonoBehaviour
 	
 	#region Fonctions
 	
+
 	public void ResetAgent()
 	{
+		StartCoroutine(ResetCoroutine());
+	}
+
+	private IEnumerator ResetCoroutine()
+	{
+		yield return new WaitForFixedUpdate();
+    
 		transform.position = Vector3.zero;
 		transform.rotation = Quaternion.identity;
-		_carController.Reset();
 
 		inputs = new float[_net._layers[0]];
-		
 		_fitness = 0;
 		_totalCheckpointDist = 0;
 		_nextCheckpoint = CheckpointManager.instance.FirstCheckpoint;

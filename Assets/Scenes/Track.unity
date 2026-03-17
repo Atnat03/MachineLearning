@@ -4171,7 +4171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AgentManager
   _populationSize: 100
   _trainingDuration: 30
-  _agentPrefab: {fileID: 6248397512197829804, guid: bd72f27debc99fa40b628ab3e6e22103, type: 3}
+  _agentPrefab: {fileID: 6568117542059215827, guid: 0eb8101901ff206478a1f6f5decd826a, type: 3}
   _agentGroup: {fileID: 519676114}
   _camera: {fileID: 330585548}
   _trainingDurationByFitness:
