@@ -24,7 +24,7 @@ public class CameraFollow : MonoBehaviour
 
     #region Fonctions
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         if (_target == null) return;
         
