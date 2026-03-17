@@ -1,0 +1,5 @@
+Mardi 17/03
+
+- 1er test de rajout d'input/outpu : 
+input  => rajout du ratio de drift qu'on a actuellement (entre 0 et le prix du boost de niveau 3)
+output => rajout du contrôle du boolean de drift sur la valeur du 3e neurone de sortis > 0.9

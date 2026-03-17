@@ -13,6 +13,7 @@ public class KartController : MonoBehaviour
     public float VerticalInput { get => _verticalInput; set => _verticalInput = value; }
     
     public bool IsDrifing  { get => _isDrifting; set => _isDrifting = value; }
+    public float DriftAmount => _driftPower/_driftLevel3Price;
     
     #endregion
     

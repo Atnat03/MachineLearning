@@ -39,7 +39,7 @@ public class AgentManager : MonoBehaviour
 
 	#region Fonctions
 
-	void Start()
+	void Awake()
 	{
 		//StartCoroutine(Loop());
 		_trainingDuration = 5;

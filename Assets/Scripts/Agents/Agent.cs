@@ -64,6 +64,8 @@ public class Agent : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if (inputs == null) return;
+		
 		InputsUpdate();
 		OutputsUpdate();
 		FitnessUpdate();
@@ -72,6 +74,8 @@ public class Agent : MonoBehaviour
 	private void InputsUpdate()
 	{
 		pos = transform.position;
+
+		Debug.Log(inputs.Length);
 		
 		inputs[0] = RaySensor(pos+Vector3.up*0.2f, transform.forward, 4);
 		inputs[1] = RaySensor(pos+Vector3.up*0.2f, transform.right, 1.5f);
@@ -79,6 +83,7 @@ public class Agent : MonoBehaviour
 		inputs[3] = RaySensor(pos+Vector3.up*0.2f, transform.forward + transform.right, 2);
 		inputs[4] = RaySensor(pos+Vector3.up*0.2f, transform.forward - transform.right, 2);
 		inputs[5] = 1;
+		inputs[6] = _carController.DriftAmount;
 	}
 
 	private float RaySensor(Vector3 origin, Vector3 direction, float lenght)
@@ -90,7 +95,7 @@ public class Agent : MonoBehaviour
 			Color rayColor = Color.Lerp(Color.red, Color.green, 1- hit.distance / realLenght);
 			Debug.DrawRay(origin, direction.normalized * hit.distance, rayColor);
 			
-			return 1- hit.distance / realLenght;
+			return 1 - hit.distance / realLenght;
 		}
 		
 		Debug.DrawRay(origin, direction.normalized * realLenght, Color.red);
@@ -104,7 +109,10 @@ public class Agent : MonoBehaviour
 
 		_carController.HorizontalInput = _net._neurons[^1][0];
 		_carController.VerticalInput = _net._neurons[^1][1];
+		_carController.IsDrifing = _net._neurons[^1][2] > 0.9f;
 	}
+	
+	
 	private void FitnessUpdate()
 	{
 		_distanceTraveled = _totalCheckpointDist + (_nextCheckpointDist - (_nextCheckpoint.position - transform.position).magnitude);
@@ -114,6 +122,7 @@ public class Agent : MonoBehaviour
 			_fitness = _distanceTraveled;
 		}
 	}
+	
 
 	public void CheckpointReach(Transform checkpoint)
 	{

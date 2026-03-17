@@ -1107,6 +1107,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 41432233725332232, guid: 2631b14f32eaf7b4783680c0127133b1, type: 3}
+      propertyPath: _rb
+      value: 
+      objectReference: {fileID: 1170096016}
     - target: {fileID: 8568216861740399040, guid: 2631b14f32eaf7b4783680c0127133b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1582,6 +1586,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6072814831881591767, guid: 01ba46ed9b50e62488944e6c5d27db2d, type: 3}
+--- !u!54 &1170096016 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1930399696764903914, guid: 2631b14f32eaf7b4783680c0127133b1, type: 3}
+  m_PrefabInstance: {fileID: 797034564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1481867570
 MeshCollider:
   m_ObjectHideFlags: 0
