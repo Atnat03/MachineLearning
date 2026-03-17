@@ -94,9 +94,12 @@ public class KartController : MonoBehaviour
         {
             _horizontalInput = Input.GetAxis("Horizontal");
             _verticalInput = Input.GetAxis("Vertical");
+
+            bool isDriting = Input.GetAxis("DriftManette") > 0.5f;
+            print(_verticalInput);
             
             // Démarrage du drift
-            if (Input.GetKeyDown(KeyCode.LeftShift) && !_isDrifting && Mathf.Abs(_horizontalInput) > 0.1f && _grounded)
+            if (isDriting && !_isDrifting && Mathf.Abs(_horizontalInput) > 0.1f && _grounded)
             {
                 StartDrift();
             }
@@ -107,7 +110,7 @@ public class KartController : MonoBehaviour
                 AccumulateDriftPower();
                 
                 // Fin du drift
-                if (Input.GetKeyUp(KeyCode.LeftShift))
+                if (!isDriting)
                 {
                     EndDrift();
                 }
