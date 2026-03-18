@@ -15437,6 +15437,7 @@ MonoBehaviour:
   _driftBoostLevel1: 1000
   _driftBoostLevel2: 2000
   _driftBoostLevel3: 3000
+  _currentDriftLevel: 0
   _driftSteerMultiplier: 0.4
   _driftCounterSteerRange: 0.3
   _driftColors:
@@ -15465,6 +15466,7 @@ MonoBehaviour:
   - {fileID: 5935093350204665346}
   - {fileID: 5249652273951799373}
   isPlayerInput: 0
+  isBoosting: 0
 --- !u!135 &7071010801620996572
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15526,7 +15528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Agent
   _net:
-    _layers: 07000000060000000600000003000000
+    _layers: 08000000060000000600000003000000
   _fitness: 0
   _carController: {fileID: 6262790616251282002}
   _rayRange: 4
@@ -15543,6 +15545,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2d3942b1f778dc547a04f61fe1393501, type: 2}
   - {fileID: 2100000, guid: 3c0e0b74325f2154b921f13cd0b8bef5, type: 2}
   - {fileID: 2100000, guid: 2788bbb8234a63849aac410c6bb86cd5, type: 2}
+  numberLevelBoost: 0
 --- !u!1 &7350001467296413364
 GameObject:
   m_ObjectHideFlags: 0

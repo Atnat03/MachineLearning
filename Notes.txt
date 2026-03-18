@@ -3,3 +3,44 @@ Mardi 17/03
 - 1er test de rajout d'input/outpu : 
 input  => rajout du ratio de drift qu'on a actuellement (entre 0 et le prix du boost de niveau 3)
 output => rajout du contrôle du boolean de drift sur la valeur du 3e neurone de sortis > 0.9
+
+Mercredi 18/30
+
+Après 150 générations :
+
+Résultat : l'ia ne sait pas qu'elle peut drifter, l'output de contrôle de boost est trop émever, l'ia n'essais donc jamais de drifter.
+
+
+Solution => Rajouter en input si elle peux drifter (si Mathf.Abs(_horizontalInput) > 0.1) pour lui faire comprendre quand elle peut le faire + ajouté un peu de fitness quand l'amount de boost augmente et en ajouté plus quand elle relache et a un boost (plus ou moins de fitness suivant le niveau de boost)
+
+Résultat : l'ia ne sait toujours pas qu'elle peut drifter, je pense que la fitness de la distance prend trop de place
+J'ai donc diviser par 4 la fitness que la voiture gagne via la distance... 
+Après 50 générations, l'ia commencer a sauter !! Elle appuis donc correctement sur la touche au bon moment, mais ne reste pas appuyer pour l'instant.
+Mais elle gagne si peu de fitness que la durée d'entrainement reste à 5.
+Solution => Remettre la fitness de la distance et booster celle du drift.
+
+Apres avoir mis le viewer, je me suis rendu compte que j'avais oublié que les neurones allait de -1 à 1 et pas de 0 à 1. Donc mon output de drift n'étais pas appeler quand la valeur est en négatif… J'ai donc changer en _carController.IsDrifing = Mathf.Abs(_net._neurons[^1][2]) > 0.1f;
+
+Ok je suis bête... ma condition de drift n'était pas la bonne et n'utilisait pas les valeur envoyé par le réseau de neurones... 😭
+
+Après modification, je remet la fitness de base, car elle est bien trop elever et relever aussi la condition d'appuis sur la touche de drift
+
+Apres modification des valeurs => l'ia a trouvé que la meilleure façon de faire un bon score est de drifter en boucle en fonçant dans un mur
+Solution => baisser la fitness gagné par le drift et augmenter celle de la distance + la pénalisé si elle drift mais que sa vélocité est basse.
+
+
+La voiture n'allie toujours pas le fait de conduire jusqu'au prochain checkpoint et le fait de drifter. Le gain de fitness du au drift est encore trop élever, donc elle fait du surplace en driftant.
+Solution => Pénaliser l'ia si sa vélocité est trop faible et ne plus la récompenser quand elle atteint un certain stade de valeur de drift.
+
+Les IA commence maintenant a drifter légèrement dans les virages. Mais elles ne vont toujours pas au bout d'un chargement. Pour cela, je punis l'ia quand elle fini sont boost avec son niveau de boost = à 0 et je la récompense suivant le niveau de boost atteint.
+
+L'ia commence maintenant à drifter au bon moment et à se rendre compte que cela peut être avantageux. Maintenant la mission est qu'elle calibre bien ses drift pour optimisé au maximum ses boost. Pour cela, je vais encore plus la punir quand elle touchera un mur et je vais augmenter la différence de récompense entre les niveaux de boost.
+
+Résultat : l'ia drift bien dans les virages mais ne va pas jusqu'au bout des niveaux de drift, et n'a donc pas de boost…
+Solution => Pénalisé l'ia suivant le nombre de niveau de boost qu'elle au fait durant l'entrainement.
+
+
+
+
+
+

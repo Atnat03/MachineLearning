@@ -1854,9 +1854,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _net:
-    _layers: 06000000060000000600000002000000
+    _layers: 07000000060000000600000003000000
   _fitness: 0
-  _carController: {fileID: 3862165228963605184}
+  _carController: {fileID: 0}
   _rayRange: 4
   _layerMaskRay:
     serializedVersion: 2

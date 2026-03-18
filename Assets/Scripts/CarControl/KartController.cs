@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -12,8 +13,12 @@ public class KartController : MonoBehaviour
     public float HorizontalInput { get => _horizontalInput; set => _horizontalInput = value; }
     public float VerticalInput { get => _verticalInput; set => _verticalInput = value; }
     
-    public bool IsDrifing  { get => _isDrifting; set => _isDrifting = value; }
-    public float DriftAmount => _driftPower/_driftLevel3Price;
+    public bool IsDrifing  { get => _canDrift; set => _canDrift = value; }
+    public float DriftRatio => Mathf.Clamp01(_driftPower / _driftLevel3Price);
+    public float DriftAmount => _driftPower;
+    public float CanDrift => Mathf.Abs(_horizontalInput) > 0.3f ? 1 : 0;
+    public bool IsDriftPowerFull => _driftPower >= _driftLevel3Price - 10;
+    public Rigidbody RB => _rb;
     
     #endregion
     
@@ -57,7 +62,7 @@ public class KartController : MonoBehaviour
     [SerializeField] private float _driftBoostLevel2 = 12f;
     [SerializeField] private float _driftBoostLevel3 = 18f;
     
-    private int _currentDriftLevel = 0;
+    public int _currentDriftLevel = 0;
     
     [SerializeField] private float _driftSteerMultiplier = 1.5f;
     [SerializeField] private float _driftCounterSteerRange = 0.3f;
@@ -74,12 +79,16 @@ public class KartController : MonoBehaviour
     [SerializeField] private ParticleSystem[] _miniTurboParticles;
     [SerializeField] private GameObject[] _trailsTyre;
     [SerializeField] private GameObject[] _sandParticle;
+
+    public Action<float> OnDriftBoost;
+    public Action OnDriftStart;
+    public Action OnDriftEnd;
     
     public bool isPlayerInput = true;
     
     private float _horizontalInput;
     private float _verticalInput;
-    private bool isDriting;
+    private bool _canDrift;
     
     private bool _grounded;
     private bool _boosting = false;
@@ -97,11 +106,11 @@ public class KartController : MonoBehaviour
             _verticalInput = Input.GetAxis("Vertical");
 
             //bool isDriting = Input.GetAxis("DriftManette") > 0.5f;
-            isDriting = Input.GetKey(KeyCode.LeftShift);
+            _canDrift = Input.GetKey(KeyCode.LeftShift);
         }
         
         // Démarrage du drift
-        if (isDriting && !_isDrifting && Mathf.Abs(_horizontalInput) > 0.1f && _grounded)
+        if (_canDrift && !_isDrifting && _grounded)
         {
             StartDrift();
         }
@@ -110,9 +119,9 @@ public class KartController : MonoBehaviour
         if (_isDrifting)
         {
             AccumulateDriftPower();
-                
-            // Fin du drift
-            if (!isDriting)
+            
+            // Fin du drift : on ne veut plus drifter
+            if (!_canDrift)
             {
                 EndDrift();
             }
@@ -143,10 +152,10 @@ public class KartController : MonoBehaviour
                 _rb.linearVelocity *= _sandMultiplicator;
             }
             
-            foreach (GameObject g in _sandParticle)
+            /*foreach (GameObject g in _sandParticle)
             {
                 g.SetActive(isInSand);
-            }
+            }*/
         }
     }
 
@@ -216,6 +225,8 @@ public class KartController : MonoBehaviour
         _driftDirection = _horizontalInput > 0 ? 1 : -1;
         _driftPower = 0f;
         _currentDriftLevel = 0;
+
+        OnDriftStart?.Invoke();
         
         if (_driftParticles.Length > 0)
         {
@@ -227,10 +238,11 @@ public class KartController : MonoBehaviour
 
         foreach (GameObject trail in _trailsTyre)
         {
-            trail.SetActive(true);
+            if(trail != null) 
+                trail.SetActive(true);
         }
         
-        StartCoroutine(DriftHopAnimation());
+        //StartCoroutine(DriftHopAnimation());
     }
 
     void AccumulateDriftPower()
@@ -313,10 +325,13 @@ public class KartController : MonoBehaviour
     {
         _isDrifting = false;
         
+        OnDriftEnd?.Invoke();
+        
         if (_currentDriftLevel > 0 && !_boosting)
         {
             float boostForce = GetDriftBoostForce(_currentDriftLevel);
             StartCoroutine(DriftBoostCoroutine(boostForce, _currentDriftLevel));
+            OnDriftBoost?.Invoke(_driftPower);
         }
 
         foreach (ParticleSystem p in _driftParticles) 
@@ -326,8 +341,11 @@ public class KartController : MonoBehaviour
         
         foreach (GameObject trail in _trailsTyre)
         {
-            trail.SetActive(false);
-            trail.GetComponent<TrailRenderer>().Clear();
+            if(trail != null)
+            {
+                trail.SetActive(false);
+                trail.GetComponent<TrailRenderer>().Clear();
+            }
         }
 
         StartCoroutine(ResetKartRotation());
@@ -335,8 +353,6 @@ public class KartController : MonoBehaviour
         _driftPower = 0f;
         _currentDriftLevel = 0;
         _driftDirection = 0;
-        
-        Debug.Log("Drift ended!");
     }
 
     float GetDriftBoostForce(int level)
@@ -350,8 +366,11 @@ public class KartController : MonoBehaviour
         }
     }
 
+    public bool isBoosting = false;
     IEnumerator DriftBoostCoroutine(float boostForce, int level)
     {
+        isBoosting = true;
+        
         _rb.AddForce(transform.forward * boostForce, ForceMode.Impulse);
         
         foreach (ParticleSystem p in _miniTurboParticles) 
@@ -374,6 +393,8 @@ public class KartController : MonoBehaviour
             _rb.linearVelocity = Vector3.Lerp(startVelocity, startVelocity * 0.5f, t);
             yield return new WaitForFixedUpdate();
         }
+
+        isBoosting = false;
     }
 
     float RemapDriftControl(float input)
@@ -496,6 +517,7 @@ public class KartController : MonoBehaviour
     
         _horizontalInput = 0;
         _verticalInput = 0;
+        _canDrift = false;
         _isDrifting = false;
         _driftPower = 0;
         _currentDriftLevel = 0;
@@ -505,15 +527,21 @@ public class KartController : MonoBehaviour
         _rb.angularVelocity = Vector3.zero;
 
         _kartNormal.localRotation = Quaternion.identity;
+        _kartNormal.localPosition = Vector3.zero;
+        
         _kartModel.localEulerAngles = Vector3.zero;
+        _kartModel.localRotation = Quaternion.identity;
 
         foreach (ParticleSystem p in _driftParticles) p.Stop();
         foreach (ParticleSystem p in _driftFlashParticles) p.Stop();
         foreach (ParticleSystem p in _miniTurboParticles) p.Stop();
         foreach (GameObject trail in _trailsTyre)
         {
-            trail.SetActive(false);
-            trail.GetComponent<TrailRenderer>().Clear();
+            if(trail != null)
+            {
+                trail.SetActive(false);
+                trail.GetComponent<TrailRenderer>().Clear();
+            }
         }
     }
     #endregion

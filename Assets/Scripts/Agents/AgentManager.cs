@@ -53,12 +53,13 @@ public class AgentManager : MonoBehaviour
 		}
 		else
 		{
-			elapsedTraningTime = _trainingDuration;
-			StartNewGeneration();
+			ResetGeneration();
 		}
 		
 		_txtTimer.text = elapsedTraningTime.ToString("F0");
 		_txtGeneration.text = "Générations : " + _numberGeneration;
+		
+		Debug.Log(_agentList[0].numberLevelBoost);
 	}
 	
 	private void StartNewGeneration()
@@ -143,12 +144,18 @@ public class AgentManager : MonoBehaviour
 
 	public void ResetGeneration()
 	{
+		foreach (Agent agentToReset in _agentList)
+		{
+			agentToReset.FitnessEndGeneration();
+		}
+		
 		elapsedTraningTime = _trainingDuration;
 		StartNewGeneration();
 	}
 
 	void FocusCamera()
 	{
+		NeuralNetworkViewer.instance.Refresh(_agentList[0]);
 		_camera.Target = _agentList[0].transform;
 	}
 

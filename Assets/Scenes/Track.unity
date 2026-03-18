@@ -4135,6 +4135,7 @@ GameObject:
   - component: {fileID: 1612702684}
   - component: {fileID: 1612702685}
   - component: {fileID: 1612702686}
+  - component: {fileID: 1612702687}
   m_Layer: 0
   m_Name: "\U0001F995GameManager"
   m_TagString: Untagged
@@ -4179,7 +4180,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 5
+      value: 10
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4215,6 +4216,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataManager
   path: 
+--- !u!114 &1612702687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612702683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf9dba79e281a0429ac6a345619fc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NeuralNetworkViewer
+  layerSpacing: 100
+  neuronVerticalSpacing: 32
+  neuronDiameter: 32
+  axonThickness: 2
+  colorGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 0.0483042, g: 1, b: 0, a: 0.028255709}
+    key2: {r: 0, g: 0, b: 0, a: 1}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 32768
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 3
+  neuronPrefab: {fileID: 7656841421802237081, guid: 3814e7988f1ae924fb5cd34923c69f3d, type: 3}
+  axonPrefab: {fileID: 7972260379972243721, guid: eb85b8d3acb1b6a46af2e422f84e510f, type: 3}
+  fitnessPrefab: {fileID: 3887352732943085800, guid: 5d52041daf3bab44a9630d8bbbe8decb, type: 3}
+  viewGroup: {fileID: 1785435073}
+  agent: {fileID: 0}
 --- !u!64 &1675869490
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4415,6 +4467,7 @@ RectTransform:
   - {fileID: 1947024321}
   - {fileID: 70948346}
   - {fileID: 2087426860}
+  - {fileID: 1785435073}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4422,6 +4475,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1785435072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1785435073}
+  m_Layer: 5
+  m_Name: Visualiser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1785435073
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785435072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1742374960}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -650, y: 388}
+  m_SizeDelta: {x: 584.2241, y: 398.8773}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1908186404
 PrefabInstance:
   m_ObjectHideFlags: 0

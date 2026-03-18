@@ -7,7 +7,7 @@ public class NeuralNetwork
 {
 	#region Variables
 
-	public int[] _layers = {7, 6, 6, 3};
+	public int[] _layers = {9, 7, 7, 3};
 	public float[][] _neurons;
 	public float [][][] _axones;
 
