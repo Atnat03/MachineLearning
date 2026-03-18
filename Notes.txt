@@ -40,7 +40,22 @@ Résultat : l'ia drift bien dans les virages mais ne va pas jusqu'au bout des ni
 Solution => Pénalisé l'ia suivant le nombre de niveau de boost qu'elle au fait durant l'entrainement.
 
 
+L'ia a maintenant compris que drifter était important. Mais elle recule pour drifter, ne drifte plus que dans les virages… De plus il arrive qu'elle fasse demi tour.
 
+De plus mon ia reculer quasiment tout le temps en driftant. Donc maintenant je la punie lourdement en remettant à 0 le fitness quand elle recule et qu'elle drift.
+
+Résultat : l'ia recule moins, mais se prends énormément de murs.
+
+Solution => punir lourdement l'ia quand elle se prend un mur.
+
+Malgré tout, de temps en temps, l'ia utilise le drift de la bonne façon et décrit de belle courbe en virage pour finir avec un gros boost de niveau 3, c'est bon encourageant.
+
+
+Au bout d'une 20e de génération, je vois que mon ia fait bien plus attention aux mur et se concentre plus sur le fait d'utiliser le drift d'une meilleure manière, je vais donc le laisser s'entrainer pour voir au bout d'une centaine de génération.
+
+Apres environ 100 générations avec ces settings, mes ia se comporte mieux et drift dans les virages… meme tout le temps. Il faudrait qu'elle drift moins, je vais donc les punir si elle drift trop. De plus, elle recule souvent encore une fois.
+
+Solution => punir plus sévèrement l'ia sur le recul et moins la récompenser sur le boost.
 
 
 

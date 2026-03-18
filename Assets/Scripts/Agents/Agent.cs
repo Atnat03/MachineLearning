@@ -83,6 +83,11 @@ public class Agent : MonoBehaviour
 		_nextCheckpointDist = (_nextCheckpoint.position - transform.position).magnitude;
 		numberWallTouch = 0;
 		numberLevelBoost = 0;
+		_driftDuringGeneration = 0;
+		drifting = false;
+		elapsedTimeSpaming = 0;
+		isSpamming = false;
+		wasTouchingWallLastFrame = false;
 	}
 
 	void FixedUpdate()
@@ -106,7 +111,6 @@ public class Agent : MonoBehaviour
 		inputs[5] = 1;
 		inputs[6] = _carController.DriftRatio;
 		inputs[7] = _carController.CanDrift;
-		//inputs[8] = _carController._currentDriftLevel / 3f;
 
 		for (int i = 0; i < 5; i++)
 		{
@@ -146,113 +150,227 @@ public class Agent : MonoBehaviour
 	private Transform tr;
 	private float numberWallTouch = 0;
 	public float numberLevelBoost;
-	
-	private void FitnessUpdate()
-	{
-		#region Distance
-		_distanceTraveled = _totalCheckpointDist + (_nextCheckpointDist - (_nextCheckpoint.position - transform.position).magnitude);
+	private bool drifting = false;
+	private bool wasTouchingWallLastFrame = false;
 
-		if (_fitness < _distanceTraveled)
-		{
-			_fitness = _distanceTraveled - numberWallTouch;
-		}
+private void FitnessUpdate()
+{
+    #region Distance - BASE IMPORTANTE
+    
+    _distanceTraveled = _totalCheckpointDist + (_nextCheckpointDist - (_nextCheckpoint.position - transform.position).magnitude);
 
-		#endregion
+    if (_fitness < _distanceTraveled * 0.8f)
+    {
+        _fitness = _distanceTraveled * 0.8f;
+    }
 
-		if (elapsedTimeSpaming <= 0)
-		{
-			elapsedTimeSpaming += Time.deltaTime;
+    #endregion
 
-			isSpamming = true;
+    #region Vitesse et Direction
+    
+    float speed = _carController.RB.linearVelocity.magnitude;
+    Vector3 forward = transform.forward;
+    Vector3 velocity = _carController.RB.linearVelocity.normalized;
+    
+    float forwardDot = Vector3.Dot(forward, velocity);
+    
+    if (_carController.VerticalInput < -0.1f)
+    {
+        _fitness -= 300f * Time.deltaTime;
 
-			if (elapsedTimeSpaming >= 2)
-				isSpamming = false;
-		}
+        if (drifting)
+	        _fitness -= 700f * Time.deltaTime;
+    }
+    
+    if (forwardDot < -0.2f && speed > 1f)
+    {
+	    _fitness -= 500f * Time.deltaTime;
+    }
+    
+    if (forwardDot > 0.5f && speed > 5f)
+    {
+	    _fitness += 3f * Time.deltaTime; 
+    }
+    
+    if (speed < 2f && !(drifting && speed > 1f))
+    {
+        _fitness -= 20f * Time.deltaTime;
+    }
 
-		if(!_carController.IsDriftPowerFull)
-			_fitness += _carController.DriftAmount * 0.01f;
+    #endregion
 
-		float IsDriftFitness = 0;
-		if (_carController.IsDrifing)
-		{
-			IsDriftFitness += 2;
-			_driftDuringGeneration += 1*Time.deltaTime;
-		}
-		if(_carController.RB.linearVelocity.magnitude < 5f)
-		{
-			IsDriftFitness -= 100f;
-		}
-		
-		if(_carController.HorizontalInput < 0)
-			IsDriftFitness -= 100f;
-		
-		_fitness += IsDriftFitness;
+    #region Drift
+    
+    if (drifting && speed > 5f && forwardDot > 0.3f)
+    {
+	    _fitness += 5f * Time.deltaTime;
+	    _driftDuringGeneration += 1f * Time.deltaTime;
+        
+	    if (Mathf.Abs(_carController.HorizontalInput) > 0.3f)
+	    {
+		    _fitness += 2f * Time.deltaTime;
+	    }
+    }
+    else if (drifting && (speed < 5f || forwardDot < 0.3f))
+    {
+	    _fitness -= 10f * Time.deltaTime;
+    }
+    
+    if (!_carController.IsDriftPowerFull && speed > 5f && forwardDot > 0.3f)
+    {
+	    _fitness += _carController.DriftAmount * 0.01f * Time.deltaTime;
+    }
 
-		foreach (float f in _wallDetect)
-		{
-			if (f >= 0.9f)
-			{
-				numberWallTouch += 1f;
-			}
-		}
+    #endregion
 
-		if (tr.position.y < -1)
-			_fitness = -100;
-	}
+    #region Contrôle de direction
+    
+    Vector3 directionToCheckpoint = (_nextCheckpoint.position - transform.position).normalized;
+    float angleToCheckpoint = Vector3.Dot(forward, directionToCheckpoint);
+    
+    if (angleToCheckpoint < -0.5f)
+    {
+        _fitness -= 30f * Time.deltaTime;
+    }
+    else if (angleToCheckpoint > 0.7f && speed > 5f)
+    {
+        _fitness += 2f * Time.deltaTime;
+    }
 
-	public void FitnessEndGeneration()
-	{
-		if (_driftDuringGeneration < 1f)
-		{
-			_fitness -= 500f;
-		}
+    #endregion
 
-		if (numberLevelBoost == 0)
-			_fitness = 0;
+    #region Pénalités MURS
+    
+    if (elapsedTimeSpaming > 0)
+    {
+	    elapsedTimeSpaming -= Time.deltaTime;
+    }
 
-		if (numberLevelBoost < 5)
-			_fitness /= 2;
+    bool touchingWall = false;
+    int numberOfWallRaysHit = 0; 
+    
+    foreach (float f in _wallDetect)
+    {
+	    if (f >= 0.9f)
+	    {
+		    touchingWall = true;
+		    numberOfWallRaysHit++;
+	    }
+    }
+    
+    if (touchingWall)
+    {
+	    _fitness -= 50f * Time.deltaTime;
+        
+	    _fitness -= numberOfWallRaysHit * 20f * Time.deltaTime;
+        
+	    if (drifting)
+	    {
+		    _fitness -= 200f * Time.deltaTime;
+	    }
+        
+	    if (!wasTouchingWallLastFrame)
+	    {
+		    _fitness -= 150f;
+	    }
+        
+	    numberWallTouch += 1f * Time.deltaTime;
+    }
+    
+    wasTouchingWallLastFrame = touchingWall;
 
-	}
-	
-	private void AddBoostFitness(float amount)
-	{
-		numberLevelBoost += _carController._currentDriftLevel;
-		_fitness += amount;
-	}
-	
-	private void CheckLevelBoost()
-	{
-		int level = _carController._currentDriftLevel;
+    if (tr.position.y < -1)
+    {
+	    _fitness = -1000;
+    }
+    
+    #endregion
+}
 
-		switch (level)
-		{
-			case 0: _fitness -= 500f;break;
-			case 1: _fitness += 50f;break;
-			case 2: _fitness += 150f;break;
-			case 3: _fitness += 300f;break;
-		}
-	}
-	
-	private void CheckSpamming()
-	{
-		if (isSpamming)
-		{
-			_fitness -= 100f;
-		}
-		else
-		{
-			elapsedTimeSpaming = 0;
-		}
-	}
+public void FitnessEndGeneration()
+{
+    if (_driftDuringGeneration < 1f)
+    {
+        _fitness -= 300f;
+    }
+    else if (_driftDuringGeneration < 3f)
+    {
+        _fitness -= 100f;
+    }
+    
+    if (numberWallTouch > 5f)
+    {
+	    _fitness -= 500f;
+    }
+    else if (numberWallTouch > 2f)
+    {
+	    _fitness -= 200f;
+    }
 
-	public void CheckpointReach(Transform checkpoint)
-	{
-		_totalCheckpointDist += _nextCheckpointDist;
-		_nextCheckpoint = checkpoint;
-		_nextCheckpointDist = (_nextCheckpoint.position - transform.position).magnitude;
-	}
+    if (numberLevelBoost == 0)
+    {
+        _fitness -= 1000f;
+    }
+    else if (numberLevelBoost < 3)
+    {
+        _fitness *= 0.5f;
+    }
+}
 
+private void AddBoostFitness(float amount)
+{
+    numberLevelBoost += 1;
+    _fitness += amount;
+}
+
+private void CheckLevelBoost()
+{
+    int level = _carController._currentDriftLevel;
+
+    switch (level)
+    {
+        case 0: 
+            _fitness -= 300f;
+            break;
+        case 1: 
+            _fitness += 25f;
+            break;
+        case 2: 
+            _fitness += 75f;
+            break;
+        case 3: 
+            _fitness += 150f;
+            break;
+    }
+
+    drifting = false;
+}
+
+private void CheckSpamming()
+{
+    drifting = true;
+    
+    if (elapsedTimeSpaming > 0)
+    {
+        _fitness -= 100f;
+        isSpamming = true;
+    }
+    else
+    {
+        isSpamming = false;
+    }
+    
+    elapsedTimeSpaming = 2f;
+}
+
+public void CheckpointReach(Transform checkpoint)
+{
+    _fitness += 200f; // Gros bonus pour checkpoint
+    
+    _totalCheckpointDist += _nextCheckpointDist;
+    _nextCheckpoint = checkpoint;
+    _nextCheckpointDist = (_nextCheckpoint.position - transform.position).magnitude;
+}
 	//0 = first
 	//1 = default
 	//2 = mutant

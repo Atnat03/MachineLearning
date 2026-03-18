@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AgentManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class AgentManager : MonoBehaviour
 	[SerializeField] private Agent _agentPrefab;
 	[SerializeField] private Transform _agentGroup;
 	[SerializeField] private CameraFollow _camera;
+	[SerializeField] private LayerMask _layerMaskOnlyBest;
+	[SerializeField] private LayerMask _layerMaskDefault;
 	[SerializeField] private AnimationCurve _trainingDurationByFitness;
 	
 	[Header("Mutations")]
@@ -29,11 +32,16 @@ public class AgentManager : MonoBehaviour
 	[Header("UI")] 
 	[SerializeField] private TextMeshProUGUI _txtTimer;
 	[SerializeField] private TextMeshProUGUI _txtGeneration;
+	[SerializeField] private TextMeshProUGUI _sliderTimeText;
+	[SerializeField] private Slider _sliderTimeScale;
+	[SerializeField] private Toggle _toggleBestAgent;
 	
 	private Agent _agent;
 	private List<Agent> _agentList = new();
 	private float elapsedTraningTime = 0f;
 	private int _numberGeneration = 0;
+	private float timeScale = 1;
+	private float maxTimeScale = 5;
 	
 	#endregion
 
@@ -43,8 +51,10 @@ public class AgentManager : MonoBehaviour
 	{
 		//StartCoroutine(Loop());
 		_trainingDuration = 5;
-	}
 
+		_sliderTimeScale.value = 0.2f;
+	}
+	
 	private void Update()
 	{
 		if (elapsedTraningTime > 0)
@@ -58,6 +68,11 @@ public class AgentManager : MonoBehaviour
 		
 		_txtTimer.text = elapsedTraningTime.ToString("F0");
 		_txtGeneration.text = "Générations : " + _numberGeneration;
+		_sliderTimeText.text = timeScale.ToString("F1");
+
+		timeScale = Mathf.Lerp(0, maxTimeScale, _sliderTimeScale.value);
+		
+		Time.timeScale = timeScale;
 		
 		Debug.Log(_agentList[0].numberLevelBoost);
 	}
@@ -73,6 +88,7 @@ public class AgentManager : MonoBehaviour
 		Mutate();
 		ResetAgents();
 		SetMaterials();
+		SetLayers();
 
 		FocusCamera();
 		
@@ -142,6 +158,16 @@ public class AgentManager : MonoBehaviour
 		_agentList[0].SetMaterial(0);
 	}
 
+	private void SetLayers()
+	{
+		foreach (Agent agent in _agentList)
+		{
+			SetLayerRecursively(agent.gameObject, LayerMask.NameToLayer("Car"));
+		}
+		
+		SetLayerRecursively(_agentList[0].gameObject, LayerMask.NameToLayer("BestCar"));
+	}
+
 	public void ResetGeneration()
 	{
 		foreach (Agent agentToReset in _agentList)
@@ -188,6 +214,28 @@ public class AgentManager : MonoBehaviour
 		}
 
 		ResetGeneration();
+	}
+
+	public void ActivateVisual()
+	{
+		Camera cam = _camera.GetComponent<Camera>();
+		
+		if (_toggleBestAgent.isOn)
+		{
+			cam.cullingMask &= ~(1 << LayerMask.NameToLayer("Car"));
+		}
+		else
+		{
+			cam.cullingMask |= (1 << LayerMask.NameToLayer("Car"));
+		}
+	}
+	
+	void SetLayerRecursively(GameObject obj, int newLayer)
+	{
+		foreach (Transform t in obj.GetComponentsInChildren<Transform>(true))
+		{
+			t.gameObject.layer = newLayer;
+		}
 	}
 	
 	#endregion

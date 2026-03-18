@@ -93,7 +93,7 @@ public class KartController : MonoBehaviour
     private bool _grounded;
     private bool _boosting = false;
     private RaycastHit _hitSand;
-
+    
     #endregion
 
     #region Fonctions
@@ -545,5 +545,4 @@ public class KartController : MonoBehaviour
         }
     }
     #endregion
-
 }

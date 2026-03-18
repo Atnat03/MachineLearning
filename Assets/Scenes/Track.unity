@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.4
@@ -595,8 +599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -716.1247, y: 398}
-  m_SizeDelta: {x: 446.1088, y: 70.85}
+  m_AnchoredPosition: {x: -637.65717, y: 398}
+  m_SizeDelta: {x: 603.0438, y: 70.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &287121247
 MonoBehaviour:
@@ -710,6 +714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 85.8
@@ -771,6 +779,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1088,6 +1100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.1
@@ -1309,6 +1325,143 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &428237181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 428237182}
+  - component: {fileID: 428237184}
+  - component: {fileID: 428237183}
+  m_Layer: 5
+  m_Name: time scale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &428237182
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428237181}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 452111344}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 124.31517, y: -0.0000083447}
+  m_SizeDelta: {x: 80.0304, y: 42.8528}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &428237183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428237181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 1
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 20
+  m_fontSizeBase: 20
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &428237184
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428237181}
+  m_CullTransparentMesh: 1
 --- !u!1001 &433911246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1753,6 +1906,97 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433911268}
   m_Mesh: {fileID: -8071906769184275480, guid: 01ba46ed9b50e62488944e6c5d27db2d, type: 3}
+--- !u!1 &452111343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452111344}
+  - component: {fileID: 452111345}
+  m_Layer: 5
+  m_Name: TimeScale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &452111344
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452111343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 863756898}
+  - {fileID: 2032527323}
+  - {fileID: 1297911711}
+  - {fileID: 428237182}
+  m_Father: {fileID: 1742374960}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -776.3, y: 331}
+  m_SizeDelta: {x: 160, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &452111345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452111343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1310754451}
+  m_FillRect: {fileID: 1964101007}
+  m_HandleRect: {fileID: 1310754450}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &519676113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,6 +2039,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1857,6 +2105,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2057,6 +2309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.7
@@ -2232,6 +2488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.42
@@ -2293,6 +2553,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2356,6 +2620,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6
@@ -2417,6 +2685,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2502,6 +2774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.5
@@ -2563,6 +2839,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2663,6 +2943,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &863756897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863756898}
+  - component: {fileID: 863756900}
+  - component: {fileID: 863756899}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &863756898
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863756897}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 452111344}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &863756899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863756897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &863756900
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863756897}
+  m_CullTransparentMesh: 1
 --- !u!1 &883658819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,6 +3131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.18
@@ -2838,6 +3197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.51
@@ -2899,6 +3262,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3121,6 +3488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 61.23
@@ -3183,6 +3554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45
@@ -3233,6 +3608,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
   m_PrefabInstance: {fileID: 1157189967}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1158428104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1158428105}
+  - component: {fileID: 1158428107}
+  - component: {fileID: 1158428106}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1158428105
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158428104}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1581586805}
+  m_Father: {fileID: 1854634982}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -10}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1158428106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158428104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1158428107
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158428104}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1166999815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3244,6 +3695,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3523,6 +3978,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 83.5
@@ -3584,6 +4043,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3647,6 +4110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3708,6 +4175,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3838,6 +4309,117 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433911261}
   m_Mesh: {fileID: 6403914720818004851, guid: 01ba46ed9b50e62488944e6c5d27db2d, type: 3}
+--- !u!1 &1297911710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1297911711}
+  m_Layer: 5
+  m_Name: Handle Slide Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1297911711
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297911710}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1310754450}
+  m_Father: {fileID: 452111344}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1310754449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1310754450}
+  - component: {fileID: 1310754452}
+  - component: {fileID: 1310754451}
+  m_Layer: 5
+  m_Name: Handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1310754450
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310754449}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297911711}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1310754451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310754449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1310754452
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310754449}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1329007675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3849,6 +4431,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3990,6 +4576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 84.9
@@ -4051,6 +4641,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4124,6 +4718,81 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &1581586804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1581586805}
+  - component: {fileID: 1581586807}
+  - component: {fileID: 1581586806}
+  m_Layer: 5
+  m_Name: Checkmark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1581586805
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581586804}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1158428105}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1581586806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581586804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1581586807
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581586804}
+  m_CullTransparentMesh: 1
 --- !u!1 &1612702683
 GameObject:
   m_ObjectHideFlags: 0
@@ -4175,6 +4844,12 @@ MonoBehaviour:
   _agentPrefab: {fileID: 6568117542059215827, guid: 0eb8101901ff206478a1f6f5decd826a, type: 3}
   _agentGroup: {fileID: 519676114}
   _camera: {fileID: 330585548}
+  _layerMaskOnlyBest:
+    serializedVersion: 2
+    m_Bits: 0
+  _layerMaskDefault:
+    serializedVersion: 2
+    m_Bits: 0
   _trainingDurationByFitness:
     serializedVersion: 2
     m_Curve:
@@ -4203,6 +4878,9 @@ MonoBehaviour:
   _mutationPower: 0.5
   _txtTimer: {fileID: 1047192488}
   _txtGeneration: {fileID: 287121247}
+  _sliderTimeText: {fileID: 428237183}
+  _sliderTimeScale: {fileID: 452111345}
+  _toggleBestAgent: {fileID: 1854634983}
 --- !u!114 &1612702686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4468,6 +5146,8 @@ RectTransform:
   - {fileID: 70948346}
   - {fileID: 2087426860}
   - {fileID: 1785435073}
+  - {fileID: 452111344}
+  - {fileID: 1854634982}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4475,6 +5155,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1784545798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784545799}
+  - component: {fileID: 1784545801}
+  - component: {fileID: 1784545800}
+  m_Layer: 5
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1784545799
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784545798}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1854634982}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 9, y: -0.5}
+  m_SizeDelta: {x: -28, y: -3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1784545800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784545798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Only best
+--- !u!222 &1784545801
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784545798}
+  m_CullTransparentMesh: 1
 --- !u!1 &1785435072
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,6 +5269,104 @@ RectTransform:
   m_AnchoredPosition: {x: -650, y: 388}
   m_SizeDelta: {x: 584.2241, y: 398.8773}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1854634981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854634982}
+  - component: {fileID: 1854634983}
+  m_Layer: 5
+  m_Name: Toggle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1854634982
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854634981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1158428105}
+  - {fileID: 1784545799}
+  m_Father: {fileID: 1742374960}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -776.3, y: 274}
+  m_SizeDelta: {x: 160, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1854634983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854634981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1158428106}
+  toggleTransition: 1
+  graphic: {fileID: 1581586806}
+  m_Group: {fileID: 0}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1612702685}
+        m_TargetAssemblyTypeName: AgentManager, Assembly-CSharp
+        m_MethodName: ActivateVisual
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 0
 --- !u!1001 &1908186404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4521,6 +5378,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4717,6 +5578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.13
@@ -4779,6 +5644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.3
@@ -4829,6 +5698,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
   m_PrefabInstance: {fileID: 1959353932}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1964101006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1964101007}
+  - component: {fileID: 1964101009}
+  - component: {fileID: 1964101008}
+  m_Layer: 5
+  m_Name: Fill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1964101007
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964101006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2032527323}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1964101008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964101006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1964101009
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964101006}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1971589408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4840,6 +5784,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4948,6 +5896,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433911250}
   m_Mesh: {fileID: -6072814831881591767, guid: 01ba46ed9b50e62488944e6c5d27db2d, type: 3}
+--- !u!1 &2032527322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2032527323}
+  m_Layer: 5
+  m_Name: Fill Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2032527323
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032527322}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1964101007}
+  m_Father: {fileID: 452111344}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2034495577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4959,6 +5943,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5101,6 +6089,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointRing (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 77.03
@@ -5162,6 +6154,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5357,6 +6353,10 @@ PrefabInstance:
     - target: {fileID: 5642412329113183013, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_Name
       value: CheckpointRing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228819214535317497, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653307997155856694, guid: 24d29a7dfc900f345884926cfe5fd62e, type: 3}
       propertyPath: m_LocalPosition.x
