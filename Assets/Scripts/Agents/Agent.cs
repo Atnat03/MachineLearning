@@ -40,6 +40,7 @@ public class Agent : MonoBehaviour
 	private float _driftAmount;
 	private float _driftBoostPrice;
 	private float[] _wallDetect;
+	private float[] _voidDetect = new float[3];
 
 	
 	#endregion
@@ -112,6 +113,14 @@ public class Agent : MonoBehaviour
 		inputs[6] = _carController.DriftRatio;
 		inputs[7] = _carController.CanDrift;
 
+		inputs[8] = GroundSensor(transform.forward * 2f, 1f, 3f);
+		inputs[9] = GroundSensor(transform.right * 1.5f, 1f, 3f);
+		inputs[10] = GroundSensor(-transform.right * 1.5f, 1f, 3f);
+		
+		_voidDetect[0] = inputs[8];
+		_voidDetect[1] = inputs[9];
+		_voidDetect[2] = inputs[10];
+
 		for (int i = 0; i < 5; i++)
 		{
 			_wallDetect[i] = inputs[i];
@@ -132,6 +141,21 @@ public class Agent : MonoBehaviour
 		
 		Debug.DrawRay(origin, direction.normalized * realLenght, Color.red);
 
+		return 0;
+	}
+	
+	float GroundSensor(Vector3 offset, float height, float maxDistance)
+	{
+		Vector3 origin = transform.position + offset + Vector3.up * height;
+
+		if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, maxDistance, _layerMaskRay))
+		{
+			float value = 1 - (hit.distance / maxDistance);
+			Debug.DrawRay(origin, Vector3.down * hit.distance, Color.Lerp(Color.red, Color.green, value));
+			return value;
+		}
+
+		Debug.DrawRay(origin, Vector3.down * maxDistance, Color.red);
 		return 0;
 	}
 
@@ -159,9 +183,9 @@ private void FitnessUpdate()
     
     _distanceTraveled = _totalCheckpointDist + (_nextCheckpointDist - (_nextCheckpoint.position - transform.position).magnitude);
 
-    if (_fitness < _distanceTraveled * 0.8f)
+    if (_fitness < _distanceTraveled)
     {
-        _fitness = _distanceTraveled * 0.8f;
+        _fitness = _distanceTraveled;
     }
 
     #endregion
@@ -179,22 +203,22 @@ private void FitnessUpdate()
         _fitness -= 300f * Time.deltaTime;
 
         if (drifting)
-	        _fitness -= 700f * Time.deltaTime;
+            _fitness -= 700f * Time.deltaTime;
     }
     
     if (forwardDot < -0.2f && speed > 1f)
     {
-	    _fitness -= 500f * Time.deltaTime;
+        _fitness -= 500f * Time.deltaTime;
     }
     
     if (forwardDot > 0.5f && speed > 5f)
     {
-	    _fitness += 3f * Time.deltaTime; 
+        _fitness += 5f * Time.deltaTime; // ← Augmenté de 3 à 5 pour encourager l'avance
     }
     
     if (speed < 2f && !(drifting && speed > 1f))
     {
-        _fitness -= 20f * Time.deltaTime;
+        _fitness -= 50f * Time.deltaTime; // ← Augmenté de 20 à 50
     }
 
     #endregion
@@ -203,47 +227,99 @@ private void FitnessUpdate()
     
     if (drifting && speed > 5f && forwardDot > 0.3f)
     {
-	    _fitness += 5f * Time.deltaTime;
-	    _driftDuringGeneration += 1f * Time.deltaTime;
+        _fitness += 5f * Time.deltaTime;
+        _driftDuringGeneration += 1f * Time.deltaTime;
         
-	    if (Mathf.Abs(_carController.HorizontalInput) > 0.3f)
-	    {
-		    _fitness += 2f * Time.deltaTime;
-	    }
+        if (Mathf.Abs(_carController.HorizontalInput) > 0.3f)
+        {
+            _fitness += 2f * Time.deltaTime;
+        }
     }
     else if (drifting && (speed < 5f || forwardDot < 0.3f))
     {
-	    _fitness -= 10f * Time.deltaTime;
+        _fitness -= 10f * Time.deltaTime;
     }
     
     if (!_carController.IsDriftPowerFull && speed > 5f && forwardDot > 0.3f)
     {
-	    _fitness += _carController.DriftAmount * 0.01f * Time.deltaTime;
+        _fitness += _carController.DriftAmount * 0.01f * Time.deltaTime;
     }
 
     #endregion
 
-    #region Contrôle de direction
+    #region Contrôle de direction - PUNIR LES BOUCLES
     
     Vector3 directionToCheckpoint = (_nextCheckpoint.position - transform.position).normalized;
     float angleToCheckpoint = Vector3.Dot(forward, directionToCheckpoint);
     
+    // GROSSE pénalité si on fait demi-tour / tourne en rond
     if (angleToCheckpoint < -0.5f)
+    {
+        _fitness -= 100f * Time.deltaTime; // ← Augmenté de 30 à 100
+    }
+    else if (angleToCheckpoint < 0) // ← NOUVEAU : pénalité si on s'écarte du checkpoint
     {
         _fitness -= 30f * Time.deltaTime;
     }
+    // Bonus si on regarde vers le checkpoint
     else if (angleToCheckpoint > 0.7f && speed > 5f)
+    {
+        _fitness += 5f * Time.deltaTime; // ← Augmenté de 2 à 5
+    }
+    else if (angleToCheckpoint > 0.3f && speed > 3f) // ← NOUVEAU : bonus moyen
     {
         _fitness += 2f * Time.deltaTime;
     }
 
     #endregion
 
-    #region Pénalités MURS
+    #region Détection VIDE - RÉDUCTION DES PÉNALITÉS
+    
+    bool voidAhead = _voidDetect[0] < 0.2f; // ← Changé de 0.1 à 0.2 (moins strict)
+    bool voidRight = _voidDetect[1] < 0.2f;
+    bool voidLeft = _voidDetect[2] < 0.2f;
+    
+    // Pénalité si vide devant ET on avance (RÉDUITE)
+    if (voidAhead && forwardDot > 0 && speed > 3f)
+    {
+        _fitness -= 100f * Time.deltaTime; // ← Réduit de 200 à 100
+        
+        if (_carController.VerticalInput > 0.5f)
+        {
+            _fitness -= 150f * Time.deltaTime; // ← Réduit de 300 à 150
+        }
+    }
+    
+    // Pénalité si vide proche devant (RÉDUITE)
+    if (_voidDetect[0] < 0.4f && forwardDot > 0 && speed > 2f) // ← 0.3 → 0.4
+    {
+        _fitness -= 20f * Time.deltaTime; // ← Réduit de 50 à 20
+    }
+    
+    // Pénalité si on tourne vers le vide (RÉDUITE)
+    if (voidRight && _carController.HorizontalInput > 0.5f) // ← Seuil augmenté de 0.3 à 0.5
+    {
+        _fitness -= 50f * Time.deltaTime; // ← Réduit de 100 à 50
+    }
+    
+    if (voidLeft && _carController.HorizontalInput < -0.5f) // ← Seuil augmenté
+    {
+        _fitness -= 50f * Time.deltaTime; // ← Réduit de 100 à 50
+    }
+    
+    // BONUS pour rester sur la piste (AUGMENTÉ)
+    if (_voidDetect[0] > 0.5f && _voidDetect[1] > 0.3f && _voidDetect[2] > 0.3f) // ← Seuils réduits
+    {
+        _fitness += 3f * Time.deltaTime; // ← Augmenté de 1 à 3
+    }
+
+    #endregion
+
+    #region Pénalités MURS - BEAUCOUP PLUS SÉVÈRE
     
     if (elapsedTimeSpaming > 0)
     {
-	    elapsedTimeSpaming -= Time.deltaTime;
+        elapsedTimeSpaming -= Time.deltaTime;
     }
 
     bool touchingWall = false;
@@ -251,37 +327,37 @@ private void FitnessUpdate()
     
     foreach (float f in _wallDetect)
     {
-	    if (f >= 0.9f)
-	    {
-		    touchingWall = true;
-		    numberOfWallRaysHit++;
-	    }
+        if (f >= 0.9f)
+        {
+            touchingWall = true;
+            numberOfWallRaysHit++;
+        }
     }
     
     if (touchingWall)
     {
-	    _fitness -= 50f * Time.deltaTime;
+        _fitness -= 150f * Time.deltaTime; // ← Augmenté de 50 à 150
         
-	    _fitness -= numberOfWallRaysHit * 20f * Time.deltaTime;
+        _fitness -= numberOfWallRaysHit * 50f * Time.deltaTime; // ← Augmenté de 20 à 50
         
-	    if (drifting)
-	    {
-		    _fitness -= 200f * Time.deltaTime;
-	    }
+        if (drifting)
+        {
+            _fitness -= 400f * Time.deltaTime; // ← Augmenté de 200 à 400
+        }
         
-	    if (!wasTouchingWallLastFrame)
-	    {
-		    _fitness -= 150f;
-	    }
+        if (!wasTouchingWallLastFrame)
+        {
+            _fitness -= 300f; // ← Augmenté de 150 à 300
+        }
         
-	    numberWallTouch += 1f * Time.deltaTime;
+        numberWallTouch += 1f * Time.deltaTime;
     }
     
     wasTouchingWallLastFrame = touchingWall;
 
     if (tr.position.y < -1)
     {
-	    _fitness = -1000;
+        _fitness = -1000;
     }
     
     #endregion
@@ -365,7 +441,7 @@ private void CheckSpamming()
 
 public void CheckpointReach(Transform checkpoint)
 {
-    _fitness += 200f; // Gros bonus pour checkpoint
+    _fitness += 300f;
     
     _totalCheckpointDist += _nextCheckpointDist;
     _nextCheckpoint = checkpoint;

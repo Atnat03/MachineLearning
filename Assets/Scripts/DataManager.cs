@@ -3,52 +3,84 @@ using UnityEngine;
 using System.Xml.Serialization;
 using System.IO;
 using System.Text;
+using TMPro;
+using UnityEngine.UI;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [XmlRoot("Data")]
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
-    public        string      path;
+
+    public TMP_InputField fileNameInput;
+
+    private string folderPath;
 
     XmlSerializer serializer = new(typeof(Data));
-    Encoding      encoding   = Encoding.UTF8;
+    Encoding encoding = Encoding.UTF8;
 
     void Awake()
     {
         instance = this;
-        SetPath();
+
+        folderPath = Path.Combine(Application.dataPath, "Saves");
+
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
+    }
+
+    string GetPath()
+    {
+        string fileName = fileNameInput.text;
+
+        if (string.IsNullOrEmpty(fileName))
+            fileName = "Data";
+
+        return Path.Combine(folderPath, fileName + ".xml");
     }
 
     public void Save(Data data)
     {
-        StreamWriter streamWriter = new(path, false, encoding);
-        serializer.Serialize(streamWriter, data);
-        streamWriter.Close();
+        string path = GetPath();
+
+        using (StreamWriter streamWriter = new(path, false, encoding))
+        {
+            serializer.Serialize(streamWriter, data);
+        }
+
+        AssetDatabase.Refresh();
     }
 
-    public Data Load()
+    public Data LoadFromFile(string path)
     {
         if (File.Exists(path))
         {
-            FileStream fileStream = new(path, FileMode.Open);
-
-            Data data = serializer.Deserialize(fileStream) as Data;
-            fileStream.Close();
-
-            return data;
+            using (FileStream fileStream = new(path, FileMode.Open))
+            {
+                return serializer.Deserialize(fileStream) as Data;
+            }
         }
 
         return null;
     }
 
-    void SetPath()
+    public void OpenLoadDialog()
     {
-        path = Path.Combine(Application.persistentDataPath, "Data.xml");
+        string path = EditorUtility.OpenFilePanel("Load Save", folderPath, "xml");
+
+        if (!string.IsNullOrEmpty(path))
+        {
+            Data data = LoadFromFile(path);
+            Debug.Log("Loaded file: " + path);
+        }
     }
 }
 
 public class Data
 {
-    public int                 generation;
+    public int generation;
     public List<NeuralNetwork> nets;
 }

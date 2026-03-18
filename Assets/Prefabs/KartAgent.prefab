@@ -15528,7 +15528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Agent
   _net:
-    _layers: 08000000060000000600000003000000
+    _layers: 0b0000000a0000000a00000003000000
   _fitness: 0
   _carController: {fileID: 6262790616251282002}
   _rayRange: 4
