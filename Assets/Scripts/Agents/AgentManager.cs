@@ -203,12 +203,7 @@ public class AgentManager : MonoBehaviour
 
 	public void Load()
 	{
-		string path = UnityEditor.EditorUtility.OpenFilePanel("Load Save", Application.dataPath + "/Saves", "xml");
-
-		if (string.IsNullOrEmpty(path))
-			return;
-
-		Data data = DataManager.instance.LoadFromFile(path);
+		Data data = DataManager.instance.LoadFromFile();
 
 		if (data == null)
 			return;

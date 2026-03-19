@@ -54,8 +54,13 @@ public class DataManager : MonoBehaviour
         AssetDatabase.Refresh();
     }
 
-    public Data LoadFromFile(string path)
+    public Data LoadFromFile()
     {
+        string path = EditorUtility.OpenFilePanel("Load Save", Application.dataPath + "/Saves", "xml");
+
+        if (string.IsNullOrEmpty(path))
+            return null;
+        
         if (File.Exists(path))
         {
             using (FileStream fileStream = new(path, FileMode.Open))
@@ -65,17 +70,6 @@ public class DataManager : MonoBehaviour
         }
 
         return null;
-    }
-
-    public void OpenLoadDialog()
-    {
-        string path = EditorUtility.OpenFilePanel("Load Save", folderPath, "xml");
-
-        if (!string.IsNullOrEmpty(path))
-        {
-            Data data = LoadFromFile(path);
-            Debug.Log("Loaded file: " + path);
-        }
     }
 }
 

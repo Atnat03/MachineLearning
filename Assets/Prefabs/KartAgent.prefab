@@ -15421,7 +15421,7 @@ MonoBehaviour:
   _sandMultiplicator: 0.95
   _groundMask:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 8
   _groundRayLength: 0.75
   _maxWheelTurn: 25
   _boostForce: 5000
@@ -15528,10 +15528,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Agent
   _net:
-    _layers: 0b0000000a0000000a00000003000000
+    _layers: 0d0000000a0000000a00000003000000
   _fitness: 0
   _carController: {fileID: 6262790616251282002}
-  _rayRange: 4
+  _rayRange: 10
   _layerMaskRay:
     serializedVersion: 2
     m_Bits: 8
@@ -15545,6 +15545,39 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2d3942b1f778dc547a04f61fe1393501, type: 2}
   - {fileID: 2100000, guid: 3c0e0b74325f2154b921f13cd0b8bef5, type: 2}
   - {fileID: 2100000, guid: 2788bbb8234a63849aac410c6bb86cd5, type: 2}
+  curveByFitness:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8025435
+      value: 0.34411496
+      inSlope: 1.4051113
+      outSlope: 1.4051113
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.000536815
+      outSlope: 0.000536815
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.99848354
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   numberLevelBoost: 0
 --- !u!1 &7350001467296413364
 GameObject:

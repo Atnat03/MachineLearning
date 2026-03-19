@@ -8,7 +8,7 @@ Mercredi 18/30
 
 Après 150 générations :
 
-Résultat : l'ia ne sait pas qu'elle peut drifter, l'output de contrôle de boost est trop émever, l'ia n'essais donc jamais de drifter.
+Résultat : l'ia ne sait pas qu'elle peut drifter, l'output de contrôle de boost est trop élever, l'ia n'essais donc jamais de drifter.
 
 
 Solution => Rajouter en input si elle peux drifter (si Mathf.Abs(_horizontalInput) > 0.1) pour lui faire comprendre quand elle peut le faire + ajouté un peu de fitness quand l'amount de boost augmente et en ajouté plus quand elle relache et a un boost (plus ou moins de fitness suivant le niveau de boost)
@@ -56,6 +56,29 @@ Au bout d'une 20e de génération, je vois que mon ia fait bien plus attention a
 Apres environ 100 générations avec ces settings, mes ia se comporte mieux et drift dans les virages… meme tout le temps. Il faudrait qu'elle drift moins, je vais donc les punir si elle drift trop. De plus, elle recule souvent encore une fois.
 
 Solution => punir plus sévèrement l'ia sur le recul et moins la récompenser sur le boost.
+
+
+19/03
+
+Après une nuit a faire tourné mon IA sur une nouvelle route, bien plus complexe avec du vide et des virage larges, celle ci n'aura pas évolué positivement… En effet, après 4500 génération, elle n'arrive toujours pas a passé le 1er virage. De plus, j'ai l'impression qu'elle ont peur du vide ou de prendre un mur, elle avance donc très prudemment de drift en drift...
+
+J'ai donc modifié les raycast de vide en mettant à une distance plus élevé par rapport a mon ia, pour qu'elle detecte le vide plus tôt.
+
+Je vais également essayer de leur faire apprendre a drifter une fois qu'elle ont bien appris a se déplacer sur ce nouveau circuit, pour y aller étape par étape. Pour cela, je vais multiplié ma fitness gagné par le drift par un multiplicateur qui va croitre au fur et à mesure que mon ia progresse. De plus, j'ai modifier mon mutationRate et mutationPower (de 0.5 à 0.2 et 0.3)
+
+Résultat : mon ia s'arrete a un moment sur la piste, je ne sais pas pourquoi…
+Solution => la punir drastiquement quand sa vélocité ou ses inputs de déplacements sont très faibles
+
+
+Apres 150 générations, mon IA se déplace a peut près correctement sur le circuit. Je vais augementer le temps d'entrainement car mon circuit est grand. Pour l'instant, le comportement de drift se fait rare.
+
+Après 300 génération, mon ia ne drift toujours pas, malgrès le rajout de la récompense progressive. 
+Solution => faire un apprentissage en 2 temps. L'ia apprend a conduire sur le nouveau circuit, puis une fois qu'elle sait conduire, on la récompense encore plus si elle drift.
+
+Apres une centaine de génération, mon ia commence a drifter sur le nouveau circuit, pas de manière récurrente, mais de temps en temps et très faiblement, comme si elle avait peur que le drift lui fasse perdre le contrôle
+
+Apres encore 200 générations, mon ia drift beaucoup plus dans les virages mais en contrepartie elle se prend encore pas mal de mur
+Comme la piste de mon nouveau circuit est beaucoup plus large par moment que celle du cours, je vais essayer d'augmenter la taille des raycast pour voir si elle peux detecter les murs plus tot et donc moins se les prendre. 
 
 
 
