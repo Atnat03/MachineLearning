@@ -205,10 +205,21 @@ public class AgentManager : MonoBehaviour
 
 	public void Load()
 	{
-		Data data = DataManager.instance.Load();
+		string path = UnityEditor.EditorUtility.OpenFilePanel("Load Save", Application.dataPath + "/Saves", "xml");
+
+		if (string.IsNullOrEmpty(path))
+			return;
+
+		Data data = DataManager.instance.LoadFromFile(path);
+
+		if (data == null)
+			return;
+
 		_numberGeneration = data.generation;
-		
-		for (int i = 0; i < data.generation; i++) 
+
+		AddOrRemoveAgent();
+
+		for (int i = 0; i < data.nets.Count && i < _agentList.Count; i++)
 		{
 			_agentList[i].Network = data.nets[i];
 		}
